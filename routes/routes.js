@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const Post = require('../models/post');
 
 /////////////////////////////////////////
 //Router for login page
@@ -17,8 +18,6 @@ router.get('/posts', (req, res) => {
 
 //Router for the newPost page
 router.get('/newPost', (req, res) => {
-  console.log(req.session.username);
-  console.log("Test req.body", req.body);
   res.render('newPost');
 });
 
@@ -38,9 +37,21 @@ router.post('/', (req, res) => {
 
 
 //Post route for newPost
-router.post('/newPost', (req, res) => {
+router.post('/newPost', (req, res, err) => {
 
-  console.log("Test req.body", req.body);
+  //Adding the current user's name to the POST form obj
+  req.body.owner = req.session.username;
+
+  //POST new user post to db
+  Post
+  .create(req.body)
+  .then((post) => {
+    console.log("Test post", post);
+    res.redirect('/posts')
+  })
+  .catch(err);
+
+  //redirect to the home post page
 
 });
 /////////////////////////////////////////
