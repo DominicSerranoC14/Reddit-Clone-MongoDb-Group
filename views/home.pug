@@ -1,3 +1,11 @@
-h1 Welcome to Reddit
-lable(for=username) Enter your username
-input(for= username type=text)
+extends layout.pug
+
+block content
+
+  form(method='POST')
+    h1 Welcome to Reddit
+    label(for='username') Enter your username
+    .form-group
+      input(for='username' type='text')
+    .form-group
+      input.btn.btn-success.btn-lg(type='submit' value='submit')
