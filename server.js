@@ -5,12 +5,17 @@ const app = express();
 const connect = require('./database');
 const router = require('./routes/routes');
 const session = require('express-session');
+const bodyparser = require('body-parser');
 
 
 app.set('view engine', 'pug');
 
 /////////////////////////////////////////
+//Middlewares
 app.use(session({secret: 'username'}));
+
+app.use(bodyparser.urlencoded({extended: false}));
+/////////////////////////////////////////
 
 app.use(router);
 
