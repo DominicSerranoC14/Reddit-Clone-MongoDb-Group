@@ -1,11 +1,27 @@
+'use strict';
+
 const express = require('express');
 const app = express();
 const connect = require('./database');
-const router = require('./routes')
+const router = require('./routes/routes');
+const session = require('express-session');
+const bodyparser = require('body-parser');
+
 
 app.set('view engine', 'pug');
 
-app.use(router)
+/////////////////////////////////////////
+//Middlewares
+app.use(session({
+  secret: 'username',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(bodyparser.urlencoded({extended: false}));
+/////////////////////////////////////////
+
+app.use(router);
 
 connect()
     .then(() => {
