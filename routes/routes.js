@@ -1,3 +1,5 @@
+'use strict'
+
 const { Router } = require('express');
 const router = Router();
 const Post = require('../models/post');
@@ -11,8 +13,13 @@ router.get('/', (req,res) => {
 
 //Router for postView home page
 router.get('/posts', (req, res) => {
+  Post
+  .find()
+  .then(post => {
+    res.render('postView', {userName: req.session.username, posts: post});    
+  })
   //On redirection to '/posts' render postView with userName
-  res.render('postView', {userName: req.session.username});
+
 });
 
 
@@ -20,6 +27,27 @@ router.get('/posts', (req, res) => {
 router.get('/newPost', (req, res) => {
   res.render('newPost');
 });
+
+router.post('/post/:_id/upvote', (req, res) => {
+  const conditions = {_id:req.params._id}
+  const update = {$inc: {score: 1}, $addToSet: {upvotes: req.session.username}}
+  let canUpvote = null;
+  Post
+  .find(conditions)
+  .then(post => {
+    for (let i = 0; i < post[0].upvotes.length; i ++) {
+      if (post[0].upvotes[i] === req.session.username) {
+         canUpvote = true;
+      }
+    }
+  })
+  .then(() => {
+    if(canUpvote) {
+      Post
+      .update(conditions, update)
+    }
+  })
+})
 
 /////////////////////////////////////////
 
