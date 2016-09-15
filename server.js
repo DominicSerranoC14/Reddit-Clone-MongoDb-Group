@@ -15,7 +15,7 @@ app.set('view engine', 'pug');
 app.use(session({
   secret: 'username',
   resave: false,
-  saveUnintialized: true
+  saveUninitialized: true
 }));
 
 app.use(bodyparser.urlencoded({extended: false}));

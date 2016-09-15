@@ -35,6 +35,14 @@ router.post('/', (req, res) => {
   res.redirect('/posts');
 
 });
+
+
+//Post route for newPost
+router.post('/newPost', (req, res) => {
+
+  console.log("Test req.body", req.body);
+
+});
 /////////////////////////////////////////
 
 module.exports = router;
