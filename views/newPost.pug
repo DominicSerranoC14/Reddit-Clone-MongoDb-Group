@@ -3,24 +3,23 @@ extends layout.pug
 block content
 
   .order-form
-  form(method='POST')
-    .form-group
-      label(for='title') Title
-      input.form-control#title(type='text' title='name' placeholder='My new post' required)
-    .form-group
-      label(for='imgUrl') Image Url
-      input.form-control#imgUrl(type='text' name='imgUrl' placeholder='' required)
-    .form-group
-      label(for='linkUrl') Link Url
-      input.form-control#linkUrl(type='text' name='linkUrl' placeholder='' required)
-    .order-form__submit
-      a.btn.btn-danger.btn-lg(href='/') Cancel
-      input.btn.btn-success.btn-lg(type='submit' value='Submit')
+    form(method='POST')
+      .form-group
+        label(for='title') Title
+        input.form-control#title(type='text' name='title' placeholder='My new post' required)
+      .form-group
+        label(for='imgUrl') Image Url
+        input.form-control#imgUrl(type='text' name='imgUrl' placeholder='https://url.com' required)
+      .form-group
+        label(for='linkUrl') Link Url
+        input.form-control#linkUrl(type='text' name='linkUrl' placeholder='https://www.example.com' required)
+      .order-form__submit
+        input.btn.btn-success.btn-lg(type='submit' value='Submit')
 
 
-        //- .form-group
-        //-   label(for='size') Size
-        //-   select.form-control#size(name='size')
-        //-     option Select a size:
-        //-     each size in sizes
-        //-      option(value=size.inches) #{size.name}: #{size.inches}"```
+//- .form-group
+//-   label(for='size') Size
+//-   select.form-control#size(name='size')
+//-     option Select a size:
+//-     each size in sizes
+//-      option(value=size.inches) #{size.name}: #{size.inches}"```
