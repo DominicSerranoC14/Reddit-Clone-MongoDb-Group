@@ -1,5 +1,5 @@
 {
-  "name": "reddit-Clone",
+  "name": "(reddit-clone)",
   "version": "1.0.0",
   "description": "A Reddit clone app built with Mongodb and Mongoose.",
   "main": "database.js",
@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/DominicSerranoC14/Reddit-Clone-MongoDb-Group-BCD#readme",
   "dependencies": {
-    "bower": "^1.7.9"
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0",
+    "pug": "^2.0.0-beta6"
   }
 }
