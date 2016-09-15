@@ -12,7 +12,11 @@ app.set('view engine', 'pug');
 
 /////////////////////////////////////////
 //Middlewares
-app.use(session({secret: 'username'}));
+app.use(session({
+  secret: 'username',
+  resave: false,
+  saveUnintialized: true
+}));
 
 app.use(bodyparser.urlencoded({extended: false}));
 /////////////////////////////////////////
