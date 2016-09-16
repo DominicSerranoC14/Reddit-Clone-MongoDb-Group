@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const connect = require('./database');
-const router = require('./routes/routes');
+const router = require('./routes/voteRoute');
 const session = require('express-session');
 const bodyparser = require('body-parser');
 
