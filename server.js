@@ -8,6 +8,10 @@ const session = require('express-session');
 const bodyparser = require('body-parser');
 
 
+const port = process.env.PORT || 3000;
+app.set('port', port);
+
+
 app.set('view engine', 'pug');
 
 /////////////////////////////////////////
@@ -25,7 +29,7 @@ app.use(router);
 
 connect()
     .then(() => {
-        app.listen(3000, () => {
-            console.log('Listening on PORT 3000')
+        app.listen(${port}, () => {
+            console.log(`Listening on PORT ${port}`)
         })
     })
