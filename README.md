@@ -18,6 +18,7 @@
 - Mongoose v4.6.0
 - Pug (Jade) v2.0.0-beta6
 - Node.js v6.5.0
+
 ---
 #
 #
@@ -28,6 +29,7 @@
 - The user can also upvote and down vote each post
 - The user can also create a new post, and the home post view is updated in real time
 - A user will be able to comment on a post that another user has posted, and will updated in real time
+
 ---
 #
 #
@@ -35,4 +37,5 @@
 ### About
 ---
 - Our app uses Express-session to locally store a username to determine if a user has upvoted or downvoted on a post before. If they have, their vote will not be registered
+
 ---
