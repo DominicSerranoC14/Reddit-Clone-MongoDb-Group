@@ -29,23 +29,32 @@ router.get('/newPost', (req, res) => {
 });
 
 router.post('/post/:_id/upvote', (req, res) => {
-  const conditions = {_id:req.params._id}
+  const conditions = { _id: req.params._id}
   const update = {$inc: {score: 1}, $addToSet: {upvotes: req.session.username}}
-  let canUpvote = null;
-  Post
-  .find(conditions)
+  let canUpvote;
+  Post.find(conditions)
   .then(post => {
-    for (let i = 0; i < post[0].upvotes.length; i ++) {
-      if (post[0].upvotes[i] === req.session.username) {
-         canUpvote = true;
+    if(post[0].upvotes.length != 0){
+      for(let i = 0; i < post[0].upvotes.length; i ++){
+        if(post[0].upvotes[i] === req.session.username){
+          break;
+        } else {
+          canUpvote = true;
+          break;
+        }
+      }
+      if(canUpvote === true){
+        Post.update(conditions, update)
+        .then(post => {
+      })
       }
     }
-  })
-  .then(() => {
-    if(canUpvote) {
-      Post
-      .update(conditions, update)
+    else {
+      // console.log('no')
+      // Post.update(conditions, update)
+      // .then(post => {})
     }
+
   })
 })
 
