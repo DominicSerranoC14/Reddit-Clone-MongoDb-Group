@@ -4,10 +4,11 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 
+
 /////////////////////////////////////////
 //Router for login page
 router.get('/', (req,res) => {
-    res.render('login')
+  res.render('login');
 });
 
 
@@ -27,37 +28,6 @@ router.get('/posts', (req, res) => {
 router.get('/newPost', (req, res) => {
   res.render('newPost');
 });
-
-router.post('/post/:_id/upvote', (req, res) => {
-  const conditions = { _id: req.params._id}
-  const update = {$inc: {score: 1}, $addToSet: {upvotes: req.session.username}}
-  let canUpvote;
-  Post.find(conditions)
-  .then(post => {
-    if(post[0].upvotes.length != 0){
-      for(let i = 0; i < post[0].upvotes.length; i ++){
-        if(post[0].upvotes[i] === req.session.username){
-          break;
-        } else {
-          canUpvote = true;
-          break;
-        }
-      }
-      if(canUpvote === true){
-        Post.update(conditions, update)
-        .then(post => {
-      })
-      }
-    }
-    else {
-      console.log('no')
-      Post.update(conditions, update)
-      .then(post => {})
-    }
-
-  })
-})
-
 /////////////////////////////////////////
 
 
