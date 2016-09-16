@@ -29,7 +29,7 @@ app.use(router);
 
 connect()
     .then(() => {
-        app.listen(${port}, () => {
+        app.listen(port, () => {
             console.log(`Listening on PORT ${port}`)
         })
     })
