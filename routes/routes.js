@@ -16,7 +16,7 @@ router.get('/posts', (req, res) => {
   Post
   .find()
   .then(post => {
-    res.render('postView', {userName: req.session.username, posts: post});    
+    res.render('postView', {userName: req.session.username, posts: post});
   })
   //On redirection to '/posts' render postView with userName
 
@@ -50,9 +50,9 @@ router.post('/post/:_id/upvote', (req, res) => {
       }
     }
     else {
-      // console.log('no')
-      // Post.update(conditions, update)
-      // .then(post => {})
+      console.log('no')
+      Post.update(conditions, update)
+      .then(post => {})
     }
 
   })
