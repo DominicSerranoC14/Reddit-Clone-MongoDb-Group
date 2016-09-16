@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const mongoUrl = 'mongodb://localhost:27017/reddit';
+const mongoUrl = process.env.MONGODB_URL || 'mongodb://localhost:27017/reddit';
 
 mongoose.Promise = Promise;
 
