@@ -35,14 +35,12 @@ router.post('/post/:_id/upvote', (req, res) => {
   Post.find(conditions)
   .then(post => {
     if(post[0].upvotes.length != 0){
-      console.log('yes')
       for(let i = 0; i < post[0].upvotes.length; i ++){
-        console.log(post[0].upvotes[i])
         if(post[0].upvotes[i] === req.session.username){
-          return
+          break;
         } else {
           canUpvote = true;
-          break
+          break;
         }
       }
       if(canUpvote === true){
@@ -52,9 +50,9 @@ router.post('/post/:_id/upvote', (req, res) => {
       }
     }
     else {
-      console.log('no')
-      Post.update(conditions, update)
-      .then(post => {})
+      // console.log('no')
+      // Post.update(conditions, update)
+      // .then(post => {})
     }
 
   })
