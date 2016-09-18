@@ -11,8 +11,10 @@ const bodyparser = require('body-parser');
 const port = process.env.PORT || 3000;
 app.set('port', port);
 
-
 app.set('view engine', 'pug');
+
+//Serve up a static index.html file here
+app.use(express.static('public'));
 
 /////////////////////////////////////////
 //Middlewares
