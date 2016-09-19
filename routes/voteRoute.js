@@ -16,7 +16,6 @@ router.post('/post/:_id/upvote', (req, res) => {
       for(let i = 0; i < post[0].upvotes.length; i ++){
         if(post[0].upvotes[i] === req.session.username){
           res.redirect('/posts');
-          break;
         } else {
           canUpvote = true;
           break;
@@ -25,13 +24,14 @@ router.post('/post/:_id/upvote', (req, res) => {
       if(canUpvote === true){
         Post.update(conditions, update)
         .then(post => {
+          res.redirect('/posts');
       })
       }
     }
     else {
       console.log('no')
       Post.update(conditions, update)
-      .then(post => {})
+      .then(post => { res.redirect('/posts') })
     }
 
   })
@@ -60,13 +60,14 @@ router.post('/post/:_id/downvote', (req, res) => {
       if(canDownVote === true){
         Post.update(conditions, update)
         .then(post => {
+          res.redirect('/posts');
       })
       }
     }
     else {
       console.log('no')
       Post.update(conditions, update)
-      .then(post => {})
+      .then(post => { res.redirect('/posts') })
     }
 
   })

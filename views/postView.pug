@@ -13,8 +13,9 @@ block content
 					a(href=post.linkUrl)
 						img.post-img(src=post.imgUrl)
 
-					form(method='POST')
-						button.vote-button(type='submit' formaction='post/'+post._id+'/upvote')
-							img.button-hover(src='/img/arrow-up.png')
-						button.vote-button(type='submit' formaction='post/'+post._id+'/downvote')
-							img(src='/img/arrow-down.png')
+				form.post-form(method='POST')
+					button.vote-button(type='submit' formaction='post/'+post._id+'/upvote')
+						img.button-hover(src='/img/arrow-up.png')
+					p #{post.score}
+					button.vote-button(type='submit' formaction='post/'+post._id+'/downvote')
+						img(src='/img/arrow-down.png')
