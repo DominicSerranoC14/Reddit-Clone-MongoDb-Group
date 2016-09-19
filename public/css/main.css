@@ -1,3 +1,31 @@
 body {
   text-align: center;
+  background: black;
+  color: white;
+  font-size: 30px;
+  font-family: 'VT323', monospace;
+}
+
+a {
+  text-decoration: none;
+  color: green;
+}
+
+/* Navbar styles */
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.nav-button {
+  border: dotted 3px green;
+  padding: .3rem;
+}
+
+.nav-button:hover {
+  border: dotted 3px white;
+  color: white;
 }

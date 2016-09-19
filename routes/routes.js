@@ -19,8 +19,6 @@ router.get('/posts', (req, res) => {
   .then(post => {
     res.render('postView', {userName: req.session.username, posts: post});
   })
-  //On redirection to '/posts' render postView with userName
-
 });
 
 
