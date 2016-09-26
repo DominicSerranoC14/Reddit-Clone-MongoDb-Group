@@ -2,65 +2,17 @@
 
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/post');
-
-
-/////////////////////////////////////////
-//Router for login page
-router.get('/', (req,res) => {
-  res.render('login');
-});
-
-
-//Router for postView home page
-router.get('/posts', (req, res) => {
-  Post
-  .find()
-  .then(post => {
-    res.render('postView', {userName: req.session.username, posts: post});
-  })
-  //On redirection to '/posts' render postView with userName
-
-});
-
-
-//Router for the newPost page
-router.get('/newPost', (req, res) => {
-  res.render('newPost');
-});
+const root = require('./root');
+const posts = require('./post');
 /////////////////////////////////////////
 
 
 /////////////////////////////////////////
-//Post route for '/' login view
-router.post('/', (req, res) => {
-
-  //Stores the username in a local session on sign in
-  req.session.username = req.body.username;
-
-  res.redirect('/posts');
-
-});
-
-
-//Post route for newPost
-router.post('/newPost', (req, res, err) => {
-
-  //Adding the current user's name to the POST form obj
-  req.body.owner = req.session.username;
-
-  //POST new user post to db
-  Post
-  .create(req.body)
-  .then((post) => {
-    console.log("Test post", post);
-    res.redirect('/posts')
-  })
-  .catch(err);
-
-  //redirect to the home post page
-
-});
+//Routing middleware
+router.use(root);
+router.use(posts);
 /////////////////////////////////////////
 
+
+/////////////////////////////////////////
 module.exports = router;

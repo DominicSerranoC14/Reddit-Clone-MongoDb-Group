@@ -1,14 +1,21 @@
 extends layout.pug
 
 block content
-	h1 Hello #{userName}
+	.nav-bar
+		p Hello #{userName}
+		a.nav-button(href='/newPost') New Post
 	#pagePosts
 		each post in posts
-			.postcard
+			.post-card-container
 				a(href=post.linkUrl)
 					h3 #{post.title}
+				.post-card
+					a(href=post.linkUrl)
+						img.post-img(src=post.imgUrl)
 
-				form(method='POST')
-					input.btn.btn-danger.btn-lg(type='submit' formaction='post/'+post._id+'/upvote' value='upvote')
-					input.btn.btn-danger.btn-lg(type='submit' formaction='post/'+post._id+'/downvote' value='downvote')
-	a.btn.btn-success.btn-lg(href='/newPost') Add Post
+				form.post-form(method='POST')
+					button.vote-button(type='submit' formaction='post/'+post._id+'/upvote')
+						img.button-hover(src='/img/arrow-up.png')
+					p #{post.score}
+					button.vote-button(type='submit' formaction='post/'+post._id+'/downvote')
+						img(src='/img/arrow-down.png')

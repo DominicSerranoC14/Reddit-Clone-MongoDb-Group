@@ -4,6 +4,7 @@
 ##### Brian Doane [Github Profile](https://github.com/bmdoane)
 ##### CJ Tate [Github Profile](https://github.com/cjt1105)
 ##### Dominic Serrano [Github Pofile](https://github.com/DominicSerranoC14)
+##### Check out the deployed app [here](https://reddit-clone-c14.herokuapp.com/)
 #
 #
 ---
